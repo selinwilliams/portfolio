@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import FadeInSection from './FadeInSection'
 
 const StyledProjects = styled.section`
   min-height: 100vh;
@@ -178,9 +179,56 @@ const TechList = styled.ul`
 
 const Projects = () => {
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
     triggerOnce: true
   })
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      }
+    }
+  }
+
+  const titleVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -50,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.8
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.8
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 0.8
+      }
+    }
+  }
 
   const projects = [
     {
@@ -209,11 +257,14 @@ const Projects = () => {
   return (
     <StyledProjects id="work">
       <Container>
-        <ProjectsContent>
+        <ProjectsContent
+          as={motion.div}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+        >
           <SectionTitle
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            variants={titleVariants}
           >
             <span>03.</span> Some Things I've Built
           </SectionTitle>
@@ -222,19 +273,33 @@ const Projects = () => {
             {projects.map((project, i) => (
               <ProjectCard
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.03,
+                  transition: { duration: 0.2 }
+                }}
               >
                 <header>
                   <h3>{project.title}</h3>
                   <div className="project-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <motion.a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.2, color: '#64ffda' }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <FiGithub />
-                    </a>
-                    <a href={project.external} target="_blank" rel="noopener noreferrer">
+                    </motion.a>
+                    <motion.a 
+                      href={project.external} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.2, color: '#64ffda' }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <FiExternalLink />
-                    </a>
+                    </motion.a>
                   </div>
                 </header>
                 <ProjectDescription>
@@ -242,7 +307,14 @@ const Projects = () => {
                 </ProjectDescription>
                 <TechList>
                   {project.tech.map((tech, i) => (
-                    <li key={i}>{tech}</li>
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 + (i * 0.1) }}
+                    >
+                      {tech}
+                    </motion.li>
                   ))}
                 </TechList>
               </ProjectCard>
