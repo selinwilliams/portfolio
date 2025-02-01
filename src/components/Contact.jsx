@@ -123,6 +123,14 @@ const Input = styled.input`
   &::placeholder {
     color: ${props => props.theme.colors.text}80;
   }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: ${props => props.theme.colors.text};
+    -webkit-box-shadow: 0 0 0px 1000px ${props => props.theme.colors.background} inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
 `
 
 const TextArea = styled.textarea`
@@ -145,6 +153,14 @@ const TextArea = styled.textarea`
 
   &::placeholder {
     color: ${props => props.theme.colors.text}80;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: ${props => props.theme.colors.text};
+    -webkit-box-shadow: 0 0 0px 1000px ${props => props.theme.colors.background} inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `
 

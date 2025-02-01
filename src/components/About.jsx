@@ -213,7 +213,7 @@ const About = () => {
           >
             <span>01.</span> About Me
           </SectionTitle>
-          
+
           <ContentWrapper ref={ref}>
             <AboutText
               initial={{ opacity: 0, y: 20 }}
@@ -221,15 +221,25 @@ const About = () => {
               transition={{ duration: 0.5 }}
             >
               <p>
-                Hello! I'm Selin, a software engineer passionate about creating digital experiences that make a difference. 
-                My journey in web development started back in 2021 when I decided to explore the world of coding.
+                Hello! I'm Selin, a software engineer focused on building impactful solutions that solve real-world problems.
               </p>
               <p>
-                Fast-forward to today, I've had the privilege of working on diverse projects that have helped me develop 
-                a strong foundation in both frontend and backend development. I focus on writing clean, efficient code 
-                and building user-friendly applications.
+                As an English teacher in Turkey, I was completely unaware that Silicon Valley would soon rewrite my story.
+                The Bay Area's infectious energy and innovation culture sparked an unexpected plot twist in my career narrative.
+                Trading Shakespeare for JavaScript might seem like a dramatic pivot, but the art of breaking down complex stories translates surprisingly well into writing elegant code.
+                My journey from teaching syntax and literature to mastering programming syntax has equipped me with a unique perspective: the ability to see technical challenges through both a creative and analytical lens.
+
+                Now, as a full-stack engineer specializing in modern JavaScript frameworks and Python technologies, I've channeled my teaching experience into developing intuitive applications.
+                My flagship project, FoodBridge, connects food providers with distribution centers to combat food waste.
+                This project not only showcases my technical skills but also reflects my commitment to developing solutions that make a tangible difference in communities.
+
+                As the tech landscape evolves with AI and machine learning reshaping development practices, I'm particularly intrigued by the possibilities of integrating these technologies into practical applications.
+              </p>
+              <p>
+                Currently, I'm focused on building and scaling FoodBridge (React/Flask) and TaskFlow (React/Redux/Flask), creating solutions that combine technical excellence with real-world impact.
               </p>
               <p>Here are a few technologies I've been working with recently:</p>
+
               <ul>
                 <li>JavaScript (ES6+)</li>
                 <li>React</li>
@@ -239,7 +249,7 @@ const About = () => {
                 <li>PostgreSQL</li>
               </ul>
             </AboutText>
-            
+
             <ImageWrapper
               initial={{ opacity: 0, x: 20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}

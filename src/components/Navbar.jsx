@@ -166,7 +166,7 @@ const Navbar = () => {
         <NavLink href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
           <NavNumber>04.</NavNumber>Contact
         </NavLink>
-        <ResumeButton href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+        <ResumeButton href="/Williams_Selin_Resume.pdf" target="_blank" rel="noopener noreferrer">
           Resume
         </ResumeButton>
       </NavLinks>
@@ -196,7 +196,7 @@ const Navbar = () => {
           <NavLink href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
             <NavNumber>04.</NavNumber>Contact
           </NavLink>
-          <ResumeButton href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          <ResumeButton href="/Williams_Selin_Resume.pdf" target="_blank" rel="noopener noreferrer">
             Resume
           </ResumeButton>
         </MobileMenu>

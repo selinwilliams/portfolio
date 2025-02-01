@@ -232,25 +232,25 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "FoodBridge",
+      description: "A full-stack web application designed to reduce food waste while addressing food insecurity in local communities. This platform creates a seamless connection between food service providers (restaurants, grocery stores, etc.) and recipients in need, facilitating efficient food donation and distribution.",
+      tech: ["React/Redux", "Flask/PostgreSQL", "Chart.js", "Node.js"],
+      github: "https://github.com/selinwilliams/FoodBridge",
+      external: "https://foodbridge.sbtl.dev"
+    },
+    {
       title: "TaskFlow",
-      description: "A modern task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-      github: "https://github.com",
-      external: "https://project.com"
+      description: "A modern, full-stack project management solution built to streamline agile development workflows. TaskFlow empowers teams to efficiently manage projects through an intuitive drag-and-drop interface and real-time progress tracking.",
+      tech: ["React.js", "Redux", "Vite", "Flask", "PostgreSQL", "SQLAlchemy ORM", "Docker", "CSS Modules", "Git"],
+      github: "https://github.com/JustCodeIt760/Mod7",
+      external: "https://taskflow.sbtl.dev"
     },
     {
-      title: "WeatherVue",
-      description: "An elegant weather application featuring detailed forecasts, interactive maps, and location-based weather alerts using multiple weather APIs.",
-      tech: ["Vue.js", "Express", "OpenWeather API"],
-      github: "https://github.com",
-      external: "https://project.com"
-    },
-    {
-      title: "CodeShare",
-      description: "A real-time code collaboration platform with syntax highlighting, live video chat, and integrated version control for seamless team coding.",
-      tech: ["TypeScript", "Socket.io", "PostgreSQL"],
-      github: "https://github.com",
-      external: "https://project.com"
+      title: "TrailHome",
+      description: "A full-stack web application that reimagines the vacation rental experience, built using Express.js and PostgreSQL. This platform enables users to list, discover, and review unique accommodations with an intuitive interface and robust backend architecture.",
+      tech: ["Node.js",  "Express.js", "PostgreSQL", "Sequelize ORM", "React", "Redux"],
+      github: "https://github.com/selinwilliams/TrailHome",
+      external: "https://trailhome.sbtl.dev"
     }
   ]
 

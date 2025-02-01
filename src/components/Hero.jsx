@@ -35,6 +35,11 @@ const HeroContent = styled.div`
   text-align: left;
   margin-left: 300px;
 
+  @media (min-width: 1921px) {
+    margin-left: 450px;
+  }
+
+ 
   @media (max-width: 1400px) {
     margin-left: 200px;
   }

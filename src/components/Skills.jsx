@@ -1,6 +1,30 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { 
+  FaHtml5, 
+  FaCss3Alt, 
+  FaJs, 
+  FaReact,
+  FaNode,
+  FaPython,
+  FaDatabase,
+  FaDocker,
+  FaGit,
+  FaGithub,
+} from 'react-icons/fa'
+import { 
+  SiFlask, 
+  SiExpress, 
+  SiRedux, 
+  SiTypescript,
+  SiPostgresql,
+  SiSequelize,
+  SiVite,
+  SiMui,
+} from 'react-icons/si'
+import { BiTestTube } from 'react-icons/bi'
+import { TbApi } from 'react-icons/tb'
 
 const StyledSkills = styled.section`
   min-height: 100vh;
@@ -56,7 +80,7 @@ const SkillsContent = styled.div`
 const SectionTitle = styled(motion.h2)`
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   font-size: 28px;
   font-weight: 600;
   color: ${props => props.theme.colors.heading};
@@ -83,56 +107,58 @@ const SectionTitle = styled(motion.h2)`
 
 const SkillsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 60px 40px;
   width: 100%;
-  margin-top: 30px;
+  margin-bottom: 50px;
+  padding: 20px 0;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px 30px;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 25px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
   }
 `
 
-const SkillCategory = styled(motion.div)`
-  background-color: ${props => props.theme.colors.cardBg};
-  border-radius: 4px;
-  padding: 1.75rem;
+const SkillItem = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
 
-  h3 {
-    color: ${props => props.theme.colors.primary};
-    font-size: 17px;
-    margin-bottom: 15px;
-    font-family: ${props => props.theme.fonts.mono};
-  }
-`
-
-const SkillList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-
-  li {
+  svg {
+    width: 35px;
+    height: 35px;
     color: ${props => props.theme.colors.text};
-    font-size: 14px;
-    position: relative;
-    padding-left: 18px;
-    line-height: 1.6;
-
-    &:before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: ${props => props.theme.colors.primary};
-      font-size: 12px;
-    }
+    transition: ${props => props.theme.transitions.standard};
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  span {
+    color: ${props => props.theme.colors.text};
+    font-size: 12px;
+    font-family: ${props => props.theme.fonts.mono};
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    svg {
+      color: ${props => props.theme.colors.primary};
+      transform: translateY(-3px);
+    }
+    span {
+      color: ${props => props.theme.colors.primary};
+    }
   }
 `
 
@@ -142,59 +168,37 @@ const Skills = () => {
     triggerOnce: true
   })
 
-  const skillCategories = [
-    {
-      title: "Frontend Development",
-      skills: [
-        "React.js",
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "HTML5 & CSS3",
-        "Redux",
-        "Styled Components",
-        "Responsive Design",
-        "Next.js"
-      ]
-    },
-    {
-      title: "Backend Development",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "Python",
-        "Django",
-        "RESTful APIs",
-        "GraphQL",
-        "PostgreSQL",
-        "MongoDB"
-      ]
-    },
-    {
-      title: "Tools & Deployment",
-      skills: [
-        "Git & GitHub",
-        "Docker",
-        "AWS",
-        "CI/CD",
-        "Jest/Testing",
-        "VS Code",
-        "Postman",
-        "Firebase"
-      ]
-    },
-    {
-      title: "Professional Skills",
-      skills: [
-        "Agile/Scrum",
-        "TDD",
-        "System Design",
-        "Code Review",
-        "Technical Writing",
-        "Problem Solving",
-        "Communication",
-        "Collaboration"
-      ]
-    }
+  const skills = [
+    // Core Frontend
+    { name: "React", icon: FaReact },
+    { name: "Redux", icon: SiRedux },
+    { name: "JavaScript", icon: FaJs },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "HTML5", icon: FaHtml5 },
+    { name: "CSS3", icon: FaCss3Alt },
+    { name: "Material UI", icon: SiMui },
+    { name: "Vite", icon: SiVite },
+    
+    // Core Backend
+    { name: "Python", icon: FaPython },
+    { name: "Flask", icon: SiFlask },
+    { name: "Node.js", icon: FaNode },
+    { name: "Express", icon: SiExpress },
+    
+    // Database
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "SQL", icon: FaDatabase },
+    { name: "Sequelize", icon: SiSequelize },
+    
+    // Development Tools
+    { name: "Git", icon: FaGit },
+    { name: "GitHub", icon: FaGithub },
+    { name: "Docker", icon: FaDocker },
+
+    
+    // API & Testing
+    { name: "REST APIs", icon: TbApi },
+    { name: "Testing", icon: BiTestTube }
   ]
 
   return (
@@ -210,20 +214,16 @@ const Skills = () => {
           </SectionTitle>
 
           <SkillsGrid ref={ref}>
-            {skillCategories.map((category, i) => (
-              <SkillCategory
+            {skills.map((skill, i) => (
+              <SkillItem
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <h3>{category.title}</h3>
-                <SkillList>
-                  {category.skills.map((skill, j) => (
-                    <li key={j}>{skill}</li>
-                  ))}
-                </SkillList>
-              </SkillCategory>
+                <skill.icon />
+                <span>{skill.name}</span>
+              </SkillItem>
             ))}
           </SkillsGrid>
         </SkillsContent>
