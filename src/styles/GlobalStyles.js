@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
     transition: background-color 0.3s ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
   }
 
   /* Enhanced Smooth Scrolling */

@@ -44,6 +44,8 @@ const StyledMain = styled.main`
   align-items: center;
   overflow-x: hidden;
   padding-top: var(--nav-height);
+  position: relative;
+  overscroll-behavior: none;
 
   @media (max-width: 768px) {
     padding-top: calc(var(--nav-height) - 20px);
