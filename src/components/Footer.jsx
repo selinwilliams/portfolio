@@ -6,7 +6,6 @@ const StyledFooter = styled.footer`
   padding: 20px 0;
   position: relative;
   bottom: 0;
-  padding-left: 300px;
 `
 
 const FooterContent = styled.div`

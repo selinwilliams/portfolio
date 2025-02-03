@@ -6,19 +6,24 @@ import { scrollTo } from '../utils/scrollTo'
 const StyledNav = styled.nav`
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: var(--nav-height);
-  padding: 30px 50px;
+  padding: 0 50px;
   background: ${props => props.theme.colors.glassBg};
   backdrop-filter: blur(10px);
   z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: ${props => props.theme.transitions.standard};
+  transition: all 0.15s ease;
+
+  @media (max-width: 1080px) {
+    padding: 0 40px;
+  }
 
   @media (max-width: 768px) {
-    padding: 20px;
+    padding: 0 25px;
   }
 `
 
@@ -33,6 +38,13 @@ const Logo = styled.div`
   text {
     fill: ${props => props.theme.colors.background};
   }
+
+  @media (max-width: 768px) {
+    svg {
+      width: 38px;
+      height: 38px;
+    }
+  }
 `
 
 const NavLinks = styled.div`
@@ -40,6 +52,11 @@ const NavLinks = styled.div`
   gap: 2.5rem;
   align-items: center;
   margin-right: 30px;
+
+  @media (max-width: 1080px) {
+    gap: 2rem;
+    margin-right: 20px;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -51,7 +68,7 @@ const NavLink = styled.a`
   text-decoration: none;
   font-size: 13px;
   font-family: ${props => props.theme.fonts.mono};
-  transition: ${props => props.theme.transitions.standard};
+  transition: all 0.15s ease;
 
   &:hover {
     color: ${props => props.theme.colors.primary};
@@ -73,7 +90,7 @@ const ResumeButton = styled.a`
   font-size: 13px;
   font-family: ${props => props.theme.fonts.mono};
   margin-left: 15px;
-  transition: ${props => props.theme.transitions.standard};
+  transition: all 0.15s ease;
 
   &:hover {
     background: rgba(100, 255, 218, 0.1);
@@ -99,7 +116,7 @@ const HamburgerLine = styled.span`
   height: 2px;
   margin: 5px 0;
   background-color: ${props => props.theme.colors.primary};
-  transition: ${props => props.theme.transitions.standard};
+  transition: all 0.15s ease;
 
   ${props => props.isOpen && `
     &:nth-child(1) {
@@ -130,6 +147,16 @@ const MobileMenu = styled(motion.div)`
     justify-content: center;
     gap: 2rem;
     padding: 2rem;
+
+    ${NavLink} {
+      font-size: 16px;
+    }
+
+    ${ResumeButton} {
+      font-size: 16px;
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+    }
   }
 `
 
@@ -157,11 +184,11 @@ const Navbar = () => {
         <NavLink href="#about" onClick={(e) => handleNavClick(e, 'about')}>
           <NavNumber>01.</NavNumber>About
         </NavLink>
-        <NavLink href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>
-          <NavNumber>02.</NavNumber>Experience
-        </NavLink>
         <NavLink href="#work" onClick={(e) => handleNavClick(e, 'work')}>
-          <NavNumber>03.</NavNumber>Work
+          <NavNumber>02.</NavNumber>Projects
+        </NavLink>
+        <NavLink href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>
+          <NavNumber>03.</NavNumber>Technologies
         </NavLink>
         <NavLink href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
           <NavNumber>04.</NavNumber>Contact
@@ -182,16 +209,16 @@ const Navbar = () => {
           initial={{ x: "100%" }}
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
-          transition={{ type: "tween", duration: 0.3 }}
+          transition={{ type: "tween", duration: 0.15 }}
         >
           <NavLink href="#about" onClick={(e) => handleNavClick(e, 'about')}>
             <NavNumber>01.</NavNumber>About
           </NavLink>
-          <NavLink href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>
-            <NavNumber>02.</NavNumber>Experience
-          </NavLink>
           <NavLink href="#work" onClick={(e) => handleNavClick(e, 'work')}>
-            <NavNumber>03.</NavNumber>Work
+            <NavNumber>02.</NavNumber>Projects
+          </NavLink>
+          <NavLink href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>
+            <NavNumber>03.</NavNumber>Technologies
           </NavLink>
           <NavLink href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>
             <NavNumber>04.</NavNumber>Contact

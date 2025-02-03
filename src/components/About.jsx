@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 
 const StyledAbout = styled.section`
   min-height: 100vh;
@@ -18,10 +19,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 0 25px;
-  }
 `
 
 const AboutContent = styled.div`
@@ -29,29 +26,6 @@ const AboutContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 280px;
-
-  @media (min-width: 1921px) {
-    margin-left: 400px;
-  }
-
-  @media (min-width: 1441px) and (max-width: 1920px) {
-    margin-left: 300px;
-  }
-
-  @media (max-width: 1920px) {
-  @media (min-width: 1201px) and (max-width: 1440px) {
-    margin-left: 200px;
-  }
-  
-  @media (max-width: 1200px) {
-    margin-left: 100px;
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    padding-top: 50px;
-  }
 `
 
 const SectionTitle = styled(motion.h2)`
@@ -89,21 +63,6 @@ const ContentWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   margin-top: 50px;
-
-  @media (min-width: 1921px) {
-    gap: 120px;
-  }
-
-  @media (max-width: 1200px) {
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
-  }
-
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 40px;
-  }
 `
 
 const AboutText = styled(motion.div)`
@@ -113,10 +72,6 @@ const AboutText = styled(motion.div)`
     line-height: 1.6;
     color: ${props => props.theme.colors.text};
 
-    @media (max-width: 768px) {
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
   }
 
   ul {
@@ -156,44 +111,18 @@ const ImageWrapper = styled(motion.div)`
   position: relative;
   max-width: 300px;
   justify-self: center;
- 
-
-  @media (max-width: 1200px) {
-    max-width: 280px;
-  }
-
-  @media (max-width: 1080px) {
-    max-width: 250px;
-  }
-
-  @media (max-width: 900px) {
-    margin: 20px auto 0;
-    max-width: 60%;
-  }
-
-  @media (max-width: 480px) {
-    max-width: 85%;
-    margin: 10px auto 0;
-  }
 `
 
 const StyledImage = styled.img`
   width: 100%;
   border-radius: 12px;
-  filter: grayscale(100%) contrast(1.2) brightness(1.1);
-`
+  filter: grayscale(100%) contrast(1.1) brightness(1.1);
+  transition: opacity 0.3s ease;
+  opacity: 0;
 
-const ImageOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${props => props.theme.colors.primary};
-  mix-blend-mode: multiply;
-  opacity: 0.15;
-  border-radius: 12px;
-  pointer-events: none;
+  &.loaded {
+    opacity: 1;
+  }
 `
 
 const About = () => {
@@ -202,6 +131,17 @@ const About = () => {
     triggerOnce: true
   })
 
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageLoad = (e) => {
+    e.target.classList.add('loaded');
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+    console.error('Failed to load image');
+  };
+
   return (
     <StyledAbout id="about">
       <Container>
@@ -209,7 +149,7 @@ const About = () => {
           <SectionTitle
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }}
           >
             <span>01.</span> About Me
           </SectionTitle>
@@ -218,7 +158,7 @@ const About = () => {
             <AboutText
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.2 }}
             >
               <p>
                 Hello! I'm Selin, a software engineer focused on building impactful solutions that solve real-world problems.
@@ -251,12 +191,18 @@ const About = () => {
             </AboutText>
 
             <ImageWrapper
-              initial={{ opacity: 0, x: 20 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
             >
-              <StyledImage src="/profile-image.jpeg" alt="Selin Williams" />
-              <ImageOverlay className="img-overlay" />
+              {!imageError && (
+                <StyledImage 
+                  src="/profile-image.jpeg"
+                  alt="Selin Williams" 
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
+                />
+              )}
             </ImageWrapper>
           </ContentWrapper>
         </AboutContent>

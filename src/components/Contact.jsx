@@ -19,10 +19,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 0 25px;
-  }
 `
 
 const ContactContent = styled.div`
@@ -30,28 +26,6 @@ const ContactContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 280px;
-
-  @media (min-width: 1921px) {
-    margin-left: 400px;
-  }
-
-  @media (min-width: 1441px) and (max-width: 1920px) {
-    margin-left: 300px;
-  }
-
-  @media (min-width: 1201px) and (max-width: 1440px) {
-    margin-left: 220px;
-  }
-  
-  @media (max-width: 1200px) {
-    margin-left: 100px;
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    padding-top: 50px;
-  }
 `
 
 const SectionTitle = styled(motion.h2)`

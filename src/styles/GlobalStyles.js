@@ -23,11 +23,22 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
     overflow-x: hidden;
     transition: background-color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Enhanced Smooth Scrolling */
   * {
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Smooth Scrolling for Mouse Wheel */
+  html, body {
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
   }
 
   /* Custom Scrollbar */

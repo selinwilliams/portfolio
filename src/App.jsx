@@ -35,16 +35,27 @@ const theme = {
 
 const StyledMain = styled.main`
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   background-color: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  padding-top: var(--nav-height);
+
+  @media (max-width: 768px) {
+    padding-top: calc(var(--nav-height) - 20px);
+  }
 `
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading
-    setTimeout(() => setIsLoading(false), 1000)
+    // Reduced loading time from 1000ms to 300ms
+    setTimeout(() => setIsLoading(false), 300)
   }, [])
 
   return (
@@ -57,7 +68,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.2 }} // Reduced from 0.5 to 0.2
           >
             {/* Add a loader component here if needed */}
           </motion.div>

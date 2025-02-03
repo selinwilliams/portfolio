@@ -21,9 +21,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 768px) {
-    padding: 0 25px;
-  }
 `
 
 const ProjectsContent = styled.div`
@@ -31,28 +28,6 @@ const ProjectsContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 280px;
-
-  @media (min-width: 1921px) {
-    margin-left: 400px;
-  }
-
-  @media (min-width: 1441px) and (max-width: 1920px) {
-    margin-left: 300px;
-  }
-
-  @media (min-width: 1201px) and (max-width: 1440px) {
-    margin-left: 220px;
-  }
-  
-  @media (max-width: 1200px) {
-    margin-left: 100px;
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    padding-top: 50px;
-  }
 `
 
 const SectionTitle = styled(motion.h2)`
@@ -90,15 +65,15 @@ const ProjectGrid = styled.div`
   width: 100%;
   margin-top: 50px;
 
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  // @media (max-width: 1200px) {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    margin-top: 40px;
-    gap: 20px;
-  }
+  // @media (max-width: 900px) {
+  //   grid-template-columns: 1fr;
+  //   margin-top: 40px;
+  //   gap: 20px;
+  // }
 `
 
 const ProjectCard = styled(motion.div)`
@@ -108,9 +83,6 @@ const ProjectCard = styled(motion.div)`
   padding: 1.75rem;
   height: 100%;
   
-  @media (max-width: 768px) {
-    padding: 1.5rem 1.25rem;
-  }
 
   header {
     display: flex;
@@ -118,9 +90,6 @@ const ProjectCard = styled(motion.div)`
     align-items: center;
     margin-bottom: 25px;
 
-    @media (max-width: 768px) {
-      margin-bottom: 20px;
-    }
   }
 
   h3 {
@@ -129,9 +98,6 @@ const ProjectCard = styled(motion.div)`
     font-size: 17px;
     font-weight: 600;
 
-    @media (max-width: 768px) {
-      font-size: 16px;
-    }
   }
 
   .project-links {
@@ -266,7 +232,7 @@ const Projects = () => {
           <SectionTitle
             variants={titleVariants}
           >
-            <span>03.</span> Some Things I've Built
+            <span>02.</span> Some Things I've Built
           </SectionTitle>
 
           <ProjectGrid ref={ref}>
