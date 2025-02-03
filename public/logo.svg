@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="16" r="16" fill="#64ffda"/>
+  <text x="16" y="16" text-anchor="middle" dy=".3em" fill="#0a192f" font-family="Fira Code" font-size="14" font-weight="600">
+    SW
+  </text>
+</svg> 

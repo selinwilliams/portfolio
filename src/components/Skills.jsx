@@ -42,6 +42,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `
 
 const SkillsContent = styled.div`
@@ -77,6 +81,18 @@ const SectionTitle = styled(motion.h2)`
     font-family: ${props => props.theme.fonts.mono};
     font-size: 18px;
     margin-right: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+
+    &:after {
+      width: 200px;
+    }
+
+    span {
+      font-size: 16px;
+    }
   }
 `
 const SectionTitle2 = styled(motion.h2)`
@@ -119,9 +135,24 @@ const SkillsGrid = styled.div`
   gap: 25px;
   width: 100%;
   margin-top: 50px;
-  padding: 0;
-  margin-left: 60px;
 
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 30px;
+  }
 `
 
 const SkillItem = styled(motion.div)`
@@ -149,6 +180,34 @@ const SkillItem = styled(motion.div)`
     text-align: center;
     width: 100%;
     display: block;
+  }
+
+  @media (max-width: 900px) {
+    padding: 15px 8px;
+    gap: 10px;
+
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 6px;
+    gap: 8px;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    span {
+      font-size: 11px;
+    }
   }
 
   &:hover {

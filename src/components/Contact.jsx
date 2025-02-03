@@ -19,6 +19,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `
 
 const ContactContent = styled.div`
@@ -55,6 +59,18 @@ const SectionTitle = styled(motion.h2)`
     font-size: 18px;
     margin-right: 10px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+
+    &:after {
+      width: 150px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
 `
 
 const ContactForm = styled.form`
@@ -64,6 +80,11 @@ const ContactForm = styled.form`
   flex-direction: column;
   gap: 12px;
   margin: 0 auto;
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    gap: 10px;
+  }
 `
 
 const FormGroup = styled.div`
@@ -76,6 +97,10 @@ const Label = styled.label`
   color: ${props => props.theme.colors.primary};
   font-size: 13px;
   font-family: ${props => props.theme.fonts.mono};
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 `
 
 const Input = styled.input`
@@ -92,6 +117,11 @@ const Input = styled.input`
     outline: none;
     border-color: ${props => props.theme.colors.primary};
     background-color: ${props => props.theme.colors.primary}10;
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px;
+    font-size: 11px;
   }
 
   &::placeholder {
@@ -125,6 +155,12 @@ const TextArea = styled.textarea`
     background-color: ${props => props.theme.colors.primary}10;
   }
 
+  @media (max-width: 480px) {
+    padding: 6px;
+    font-size: 11px;
+    min-height: 80px;
+  }
+
   &::placeholder {
     color: ${props => props.theme.colors.text}80;
   }
@@ -153,6 +189,12 @@ const SubmitButton = styled.button`
 
   &:hover {
     background-color: ${props => props.theme.colors.primary}10;
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px 14px;
+    font-size: 11px;
+    margin-top: 10px;
   }
 `
 

@@ -9,6 +9,18 @@ const StyledHero = styled.section`
   justify-content: center;
   width: 100%;
   padding: 0 150px;
+
+  @media (max-width: 1080px) {
+    padding: 0 100px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 50px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 25px;
+  }
 `
 
 const HeroContent = styled.div`
@@ -36,6 +48,18 @@ const Title = styled(motion.h1)`
   line-height: 1.1;
   margin-bottom: 15px;
   letter-spacing: -0.02em;
+
+  @media (max-width: 1080px) {
+    font-size: 70px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 60px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 40px;
+  }
 `
 
 const Subtitle = styled(motion.h2)`
@@ -45,6 +69,18 @@ const Subtitle = styled(motion.h2)`
   line-height: 1.1;
   margin-bottom: 40px;
   letter-spacing: -0.02em;
+
+  @media (max-width: 1080px) {
+    font-size: 60px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 50px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 30px;
+  }
 `
 
 const Description = styled(motion.p)`
@@ -54,6 +90,14 @@ const Description = styled(motion.p)`
   margin-bottom: 50px;
   line-height: 1.5;
   font-family: ${props => props.theme.fonts.mono};
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `
 
 const CTAButton = styled(motion.a)`
@@ -72,6 +116,11 @@ const CTAButton = styled(motion.a)`
     background: rgba(100, 255, 218, 0.1);
     transform: translateY(-3px);
   }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1.5rem;
+    font-size: 13px;
+  }
 `
 
 const containerVariants = {
@@ -79,18 +128,24 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+      duration: 0.5
     }
   }
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { 
+    opacity: 0, 
+    y: 20 
+  },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1.0],
     }
   }
 }
@@ -135,4 +190,4 @@ const Hero = () => {
   )
 }
 
-export default Hero 
+export default Hero

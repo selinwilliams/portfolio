@@ -21,6 +21,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `
 
 const ProjectsContent = styled.div`
@@ -56,6 +59,18 @@ const SectionTitle = styled(motion.h2)`
     font-size: 18px;
     margin-right: 10px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+
+    &:after {
+      width: 200px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
 `
 
 const ProjectGrid = styled.div`
@@ -65,15 +80,15 @@ const ProjectGrid = styled.div`
   width: 100%;
   margin-top: 50px;
 
-  // @media (max-width: 1200px) {
-  //   grid-template-columns: repeat(2, 1fr);
-  // }
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  // @media (max-width: 900px) {
-  //   grid-template-columns: 1fr;
-  //   margin-top: 40px;
-  //   gap: 20px;
-  // }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+    gap: 20px;
+  }
 `
 
 const ProjectCard = styled(motion.div)`
@@ -98,6 +113,9 @@ const ProjectCard = styled(motion.div)`
     font-size: 17px;
     font-weight: 600;
 
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   .project-links {
@@ -119,12 +137,20 @@ const ProjectCard = styled(motion.div)`
       }
     }
   }
+
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+  }
 `
 
 const ProjectDescription = styled.div`
   color: ${props => props.theme.colors.text};
   font-size: 14px;
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `
 
 const TechList = styled.ul`
@@ -140,6 +166,15 @@ const TechList = styled.ul`
     font-size: 12px;
     color: ${props => props.theme.colors.primary};
     line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    gap: 6px;
+    margin: 12px 0 0;
+    
+    li {
+      font-size: 11px;
+    }
   }
 `
 

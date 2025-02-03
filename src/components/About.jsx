@@ -19,6 +19,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 0 25px;
+  }
 `
 
 const AboutContent = styled.div`
@@ -63,6 +67,15 @@ const ContentWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   margin-top: 50px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 30px;
+  }
 `
 
 const AboutText = styled(motion.div)`
@@ -71,7 +84,6 @@ const AboutText = styled(motion.div)`
     font-size: 14px;
     line-height: 1.6;
     color: ${props => props.theme.colors.text};
-
   }
 
   ul {
@@ -105,12 +117,27 @@ const AboutText = styled(motion.div)`
       margin: 12px 0;
     }
   }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 13px;
+    }
+  }
 `
 
 const ImageWrapper = styled(motion.div)`
   position: relative;
   max-width: 300px;
   justify-self: center;
+
+  @media (max-width: 768px) {
+    max-width: 250px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 200px;
+  }
 `
 
 const StyledImage = styled.img`
