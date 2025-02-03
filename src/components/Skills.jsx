@@ -30,8 +30,12 @@ const StyledSkills = styled.section`
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 100px 0;
   
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
 `
 
 const Container = styled.div`
@@ -46,6 +50,10 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0 25px;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
 `
 
 const SkillsContent = styled.div`
@@ -53,7 +61,6 @@ const SkillsContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
 `
 
 const SectionTitle = styled(motion.h2)`
@@ -127,6 +134,12 @@ const SectionTitle2 = styled(motion.h2)`
 const ContentWrapper = styled.div`
   width: 100%;
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
 `
 
 const SkillsGrid = styled.div`
@@ -134,24 +147,28 @@ const SkillsGrid = styled.div`
   grid-template-columns: repeat(5, minmax(120px, 1fr));
   gap: 25px;
   width: 100%;
-  margin-top: 50px;
+  max-width: 1000px;
+  margin: 0 auto;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(4, minmax(120px, 1fr));
-  }
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
     gap: 20px;
   }
 
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
     gap: 15px;
   }
 
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+    gap: 12px;
+  }
+
   @media (max-width: 480px) {
-    margin-top: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 10px;
   }
 `
 
@@ -164,13 +181,31 @@ const SkillItem = styled(motion.div)`
   padding: 20px 10px;
   text-align: center;
 
+  @media (max-width: 768px) {
+    padding: 15px 8px;
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 5px;
+    gap: 8px;
+  }
+
   svg {
     width: 40px;
     height: 40px;
     color: ${props => props.theme.colors.text};
     transition: ${props => props.theme.transitions.standard};
-    display: block;
-    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   span {
@@ -178,34 +213,12 @@ const SkillItem = styled(motion.div)`
     font-size: 13px;
     font-family: ${props => props.theme.fonts.mono};
     text-align: center;
-    width: 100%;
-    display: block;
-  }
 
-  @media (max-width: 900px) {
-    padding: 15px 8px;
-    gap: 10px;
-
-    svg {
-      width: 35px;
-      height: 35px;
-    }
-
-    span {
+    @media (max-width: 768px) {
       font-size: 12px;
     }
-  }
 
-  @media (max-width: 480px) {
-    padding: 12px 6px;
-    gap: 8px;
-
-    svg {
-      width: 30px;
-      height: 30px;
-    }
-
-    span {
+    @media (max-width: 480px) {
       font-size: 11px;
     }
   }

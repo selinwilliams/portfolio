@@ -49,6 +49,12 @@ const StyledMain = styled.main`
 
   @media (max-width: 768px) {
     padding-top: calc(var(--nav-height) - 20px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: calc(var(--nav-height) - 30px);
   }
 `
 

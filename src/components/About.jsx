@@ -23,6 +23,10 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0 25px;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
 `
 
 const AboutContent = styled.div`
@@ -84,6 +88,17 @@ const AboutText = styled(motion.div)`
     font-size: 14px;
     line-height: 1.6;
     color: ${props => props.theme.colors.text};
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
   }
 
   ul {
@@ -94,6 +109,18 @@ const AboutText = styled(motion.div)`
     margin: 15px 0;
     list-style: none;
     
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+      margin: 10px 0;
+    }
+    
     li {
       position: relative;
       padding-left: 18px;
@@ -102,25 +129,28 @@ const AboutText = styled(motion.div)`
       color: ${props => props.theme.colors.text};
       line-height: 1.6;
 
+      @media (max-width: 768px) {
+        font-size: 12px;
+        padding-left: 15px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 11px;
+        padding-left: 12px;
+        line-height: 1.5;
+      }
+
       &:before {
         content: '▹';
         position: absolute;
         left: 0;
         color: ${props => props.theme.colors.primary};
         font-size: 12px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-      gap: 5px;
-      margin: 12px 0;
-    }
-  }
 
-  @media (max-width: 768px) {
-    p {
-      font-size: 13px;
+        @media (max-width: 480px) {
+          font-size: 10px;
+        }
+      }
     }
   }
 `

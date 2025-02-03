@@ -24,6 +24,10 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0 25px;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 20px;
+  }
 `
 
 const ProjectsContent = styled.div`
@@ -138,6 +142,10 @@ const ProjectCard = styled(motion.div)`
     }
   }
 
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
   @media (max-width: 480px) {
     padding: 1.25rem;
   }
@@ -150,6 +158,11 @@ const ProjectDescription = styled.div`
 
   @media (max-width: 768px) {
     font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    line-height: 1.5;
   }
 `
 
