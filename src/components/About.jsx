@@ -18,10 +18,10 @@ const Container = styled.div`
   padding: 0 50px 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
-    padding: 0 25px;
+    padding: 0 30px;
   }
 
   @media (max-width: 480px) {
@@ -62,27 +62,65 @@ const SectionTitle = styled(motion.h2)`
     font-size: 18px;
     margin-right: 10px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    margin-bottom: 30px;
+
+    &:after {
+      width: 200px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 25px;
+
+    &:after {
+      width: 150px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
 `
 
 const ContentWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 80px;
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   margin-top: 50px;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+    text-align: left;
   }
 
   @media (max-width: 480px) {
-    gap: 30px;
+    gap: 25px;
+    margin-top: 20px;
   }
 `
 
 const AboutText = styled(motion.div)`
+  flex: 3;
+  margin-right: 40px;
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+    width: 100%;
+    order: 2;
+  }
+
   p {
     margin-bottom: 15px;
     font-size: 14px;
@@ -92,33 +130,33 @@ const AboutText = styled(motion.div)`
     @media (max-width: 768px) {
       font-size: 13px;
       margin-bottom: 12px;
+      line-height: 1.5;
     }
 
     @media (max-width: 480px) {
       font-size: 12px;
       margin-bottom: 10px;
-      line-height: 1.5;
+      line-height: 1.4;
     }
   }
 
   ul {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     padding: 0;
     margin: 15px 0;
     list-style: none;
     
     @media (max-width: 768px) {
-      grid-template-columns: repeat(2, minmax(120px, 1fr));
       gap: 6px;
       margin: 12px 0;
+      justify-content: flex-start;
     }
 
     @media (max-width: 480px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 5px;
-      margin: 10px 0;
+      gap: 4px;
+      margin: 8px 0;
     }
     
     li {
@@ -128,16 +166,23 @@ const AboutText = styled(motion.div)`
       font-size: 13px;
       color: ${props => props.theme.colors.text};
       line-height: 1.6;
+      width: calc(50% - 4px);
+      min-width: 140px;
 
       @media (max-width: 768px) {
         font-size: 12px;
         padding-left: 15px;
+        width: calc(50% - 3px);
+        min-width: 120px;
+        line-height: 1.5;
       }
 
       @media (max-width: 480px) {
         font-size: 11px;
         padding-left: 12px;
-        line-height: 1.5;
+        line-height: 1.4;
+        width: 100%;
+        min-width: unset;
       }
 
       &:before {
@@ -149,6 +194,7 @@ const AboutText = styled(motion.div)`
 
         @media (max-width: 480px) {
           font-size: 10px;
+          top: 1px;
         }
       }
     }
@@ -157,12 +203,15 @@ const AboutText = styled(motion.div)`
 
 const ImageWrapper = styled(motion.div)`
   position: relative;
+  flex: 2;
   max-width: 300px;
-  justify-self: center;
+  margin-left: 40px;
 
   @media (max-width: 768px) {
     max-width: 250px;
-    margin: 0 auto;
+    margin: 0;
+    width: 100%;
+    order: 1;
   }
 
   @media (max-width: 480px) {
@@ -172,13 +221,19 @@ const ImageWrapper = styled(motion.div)`
 
 const StyledImage = styled.img`
   width: 100%;
+  height: auto;
   border-radius: 12px;
   filter: grayscale(100%) contrast(1.1) brightness(1.1);
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   opacity: 0;
 
   &.loaded {
     opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
   }
 `
 
@@ -254,7 +309,7 @@ const About = () => {
             >
               {!imageError && (
                 <StyledImage 
-                  src="/profile-image.jpeg"
+                  src="profile-image.jpeg"
                   alt="Selin Williams" 
                   onLoad={handleImageLoad}
                   onError={handleImageError}

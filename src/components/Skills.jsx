@@ -45,7 +45,7 @@ const Container = styled.div`
   padding: 0 50px 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
     padding: 0 25px;
@@ -92,6 +92,7 @@ const SectionTitle = styled(motion.h2)`
 
   @media (max-width: 768px) {
     font-size: 24px;
+    margin-bottom: 30px;
 
     &:after {
       width: 200px;
@@ -101,41 +102,26 @@ const SectionTitle = styled(motion.h2)`
       font-size: 16px;
     }
   }
-`
-const SectionTitle2 = styled(motion.h2)`
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-  font-size: 28px;
-  font-weight: 600;
-  color: ${props => props.theme.colors.heading};
-  white-space: nowrap;
-  width: 100%;
 
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 25px;
 
-  &:after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 300px;
-    background-color: ${props => props.theme.colors.primary};
-    margin-left: 20px;
-    opacity: 0;
-  }
+    &:after {
+      width: 150px;
+    }
 
-
-  span {
-    color: ${props => props.theme.colors.primary};
-    font-family: ${props => props.theme.fonts.mono};
-    font-size: 18px;
-    margin-right: 10px;
+    span {
+      font-size: 14px;
+    }
   }
 `
+
 const ContentWrapper = styled.div`
   width: 100%;
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 
   @media (max-width: 768px) {
     margin-top: 30px;
@@ -143,32 +129,35 @@ const ContentWrapper = styled.div`
 `
 
 const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
-  gap: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 1200px;
+  padding-left: 0;
+  justify-content: flex-start;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-    gap: 20px;
+    gap: 30px;
+    justify-content: flex-start;
   }
 
   @media (max-width: 900px) {
-    grid-template-columns: repeat(3, minmax(90px, 1fr));
-    gap: 15px;
+    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: repeat(3, minmax(70px, 1fr));
-    gap: 12px;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 0 10px;
+    gap: 15px;
+    grid-template-columns: repeat(4, 1fr);
   }
 `
 
@@ -178,16 +167,29 @@ const SkillItem = styled(motion.div)`
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 20px 10px;
+  padding: 15px;
   text-align: center;
+  width: calc(20% - 28px);
+  min-width: 110px;
 
-  @media (max-width: 768px) {
-    padding: 15px 8px;
-    gap: 10px;
+  @media (max-width: 1200px) {
+    width: calc(25% - 22.5px);
+    min-width: 100px;
+    padding: 12px;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+    min-width: unset;
+    padding: 10px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 8px;
   }
 
   @media (max-width: 480px) {
-    padding: 12px 5px;
+    padding: 6px;
     gap: 8px;
   }
 
@@ -295,7 +297,6 @@ const Skills = () => {
 
   return (
     <StyledSkills id="skills">
-      <SectionTitle2>
       <Container>
         <SkillsContent
           as={motion.div}
@@ -333,7 +334,6 @@ const Skills = () => {
           </ContentWrapper>
         </SkillsContent>
       </Container>
-      </SectionTitle2>
     </StyledSkills>
   )
 }

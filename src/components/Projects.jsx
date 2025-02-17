@@ -19,7 +19,7 @@ const Container = styled.div`
   padding: 0 50px 0 100px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
     padding: 0 25px;
@@ -66,6 +66,7 @@ const SectionTitle = styled(motion.h2)`
 
   @media (max-width: 768px) {
     font-size: 24px;
+    margin-bottom: 30px;
 
     &:after {
       width: 200px;
@@ -75,23 +76,44 @@ const SectionTitle = styled(motion.h2)`
       font-size: 16px;
     }
   }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 25px;
+
+    &:after {
+      width: 100px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
 `
 
 const ProjectGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
   width: 100%;
   margin-top: 50px;
+  padding: 0;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     margin-top: 40px;
     gap: 20px;
+    padding: 0;
+  }
+
+  @media (max-width: 480px) {
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0;
   }
 `
 
@@ -100,8 +122,26 @@ const ProjectCard = styled(motion.div)`
   background-color: ${props => props.theme.colors.cardBg};
   border-radius: 4px;
   padding: 1.75rem;
-  height: 100%;
-  
+  width: calc(33.333% - 17px);
+  min-width: 280px;
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 10px);
+    min-width: 260px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 500px;
+    min-width: auto;
+    padding: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    width: 100%;
+  }
 
   header {
     display: flex;
@@ -109,6 +149,9 @@ const ProjectCard = styled(motion.div)`
     align-items: center;
     margin-bottom: 25px;
 
+    @media (max-width: 480px) {
+      margin-bottom: 15px;
+    }
   }
 
   h3 {
@@ -119,6 +162,10 @@ const ProjectCard = styled(motion.div)`
 
     @media (max-width: 768px) {
       font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 15px;
     }
   }
 
@@ -141,14 +188,6 @@ const ProjectCard = styled(motion.div)`
       }
     }
   }
-
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-
-  @media (max-width: 480px) {
-    padding: 1.25rem;
-  }
 `
 
 const ProjectDescription = styled.div`
@@ -158,11 +197,12 @@ const ProjectDescription = styled.div`
 
   @media (max-width: 768px) {
     font-size: 13px;
+    line-height: 1.5;
   }
 
   @media (max-width: 480px) {
     font-size: 12px;
-    line-height: 1.5;
+    line-height: 1.4;
   }
 `
 
